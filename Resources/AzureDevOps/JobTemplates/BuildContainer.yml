@@ -1,0 +1,23 @@
+parameters:
+  DevSitContainerRegistryAdminUser: ''
+  DevSitContainerRegistryPassword: ''
+  DockerfileContext: ''
+  DockerfileName: ''
+  ImageBaseName: ''
+  ImageTag: ''
+
+jobs:
+- job: BuildNCSServiceTaxonomyEscoDbContainer
+  displayName: Build and publish build agent container
+  pool: 'Hosted Ubuntu 1604'
+  steps:
+  - template: AzureDevOpsTemplates/Build/StepTemplates/dfc-docker-publish-k8smanifest.yml@dfc-devops
+    parameters:
+      ContainerRegistryAdminUser: ${{ parameters.DevSitContainerRegistryAdminUser }}
+      ContainerRegistryPassword: ${{ parameters.DevSitContainerRegistryPassword }}
+      DockerfileContext: 'dfc-docker-hosted-agent/${{ parameters.DockerfileContext }}'
+      DockerfileName: ${{ parameters.DockerfileName }}
+      ImageBaseName: ${{ parameters.ImageBaseName }}
+      ImageTag: ${{ parameters.ImageTag }}
+      ManifestFilePath: 'dfc-docker-hosted-agent/Resources/Dockerfiles/neo4jescodb.yaml'
+        
