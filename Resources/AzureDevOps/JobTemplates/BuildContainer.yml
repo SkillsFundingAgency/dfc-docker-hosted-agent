@@ -19,5 +19,5 @@ jobs:
       DockerfileName: ${{ parameters.DockerfileName }}
       ImageBaseName: ${{ parameters.ImageBaseName }}
       ImageTag: ${{ parameters.ImageTag }}
-      ManifestFilePath: 'dfc-docker-hosted-agent/Resources/Dockerfiles/neo4jescodb.yaml'
+      ManifestFilePath: 'dfc-docker-hosted-agent/manifests/dfc-docker-agent.yaml'
         
