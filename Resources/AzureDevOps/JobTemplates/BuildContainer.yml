@@ -19,5 +19,5 @@ jobs:
       DockerfileName: ${{ parameters.DockerfileName }}
       ImageBaseName: ${{ parameters.ImageBaseName }}
       ImageTag: ${{ parameters.ImageTag }}
-      ManifestFilePath: 'dfc-docker-hosted-agent/manifests/dfc-docker-agent.yaml'
+      ManifestFilePath: 'manifests/dfc-docker-agent.yaml'
         
