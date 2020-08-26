@@ -11,6 +11,7 @@ jobs:
   displayName: Build and publish build agent container
   pool: 'Hosted Ubuntu 1604'
   steps:
+  - checkout: self
   - template: AzureDevOpsTemplates/Build/StepTemplates/dfc-docker-publish-k8smanifest.yml@dfc-devops
     parameters:
       ContainerRegistryAdminUser: ${{ parameters.DevSitContainerRegistryAdminUser }}
