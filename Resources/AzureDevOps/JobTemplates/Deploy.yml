@@ -24,5 +24,5 @@ jobs:
             ImageBaseName: ${{ parameters.ImageBaseName }}
             KeyVaultName: ${{ parameters.KeyVaultName }}
             KubernetesCluster: ${{ parameters.KubernetesCluster }}
-            ManifestFileName: dfc-docker-hosted-agent.yaml
+            ManifestFileName: dfc-docker-agent.yaml
             AzurePatToken: ${{ parameters.AzurePatToken }}
