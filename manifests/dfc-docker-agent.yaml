@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: dfc-docker-agent
-          image: __ContainerRegistryAdminUser__.azurecr.io/dfc-docker-agent:__NCSDockerDevOpsAgentsTag__
+          image: __ContainerRegistryAdminUser__.azurecr.io/dfc-docker-hosted-agent:__NCSDockerDevOpsAgentsTag__
           ports:
           - containerPort: 80
           resources:
