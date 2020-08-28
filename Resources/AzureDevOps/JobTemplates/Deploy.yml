@@ -3,7 +3,6 @@ parameters:
   AzureSubscriptionEndpoint: ''
   Environment: ''
   ImageBaseName: ''
-  KeyVaultName: ''
   KubernetesCluster: ''
   AzurePatToken: ''
 
@@ -20,9 +19,7 @@ jobs:
           parameters:
             AksResourceGroup: ${{ parameters.AksResourceGroup }}
             AzureSubscriptionEndpoint: ${{ parameters.AzureSubscriptionEndpoint}}
-            Environment: ${{ parameters.Environment }}
             ImageBaseName: ${{ parameters.ImageBaseName }}
-            KeyVaultName: ${{ parameters.KeyVaultName }}
             KubernetesCluster: ${{ parameters.KubernetesCluster }}
             ManifestFileName: dfc-docker-agent.yaml
             AzurePatToken: ${{ parameters.AzurePatToken }}

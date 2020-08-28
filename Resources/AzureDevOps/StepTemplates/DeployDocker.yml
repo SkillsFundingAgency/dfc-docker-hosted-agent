@@ -1,15 +1,13 @@
 parameters:
   AksResourceGroup: ''
   AzureSubscriptionEndpoint: ''
-  Environment: ''
   ImageBaseName: ''
-  KeyVaultName: ''
   KubernetesCluster: ''
   ManifestFilename: ''
   AzurePatToken: ''
 
 steps:
-        # Create PAT token secret
+# Create PAT token secret
 - task: Kubernetes@1
   displayName: kubectl create pat token secret
   inputs:
