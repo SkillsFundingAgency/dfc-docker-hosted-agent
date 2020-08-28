@@ -1,0 +1,28 @@
+parameters:
+  AksResourceGroup: ''
+  AzureSubscriptionEndpoint: ''
+  Environment: ''
+  ImageBaseName: ''
+  KeyVaultName: ''
+  KubernetesCluster: ''
+  AzurePatToken: ''
+
+jobs:
+- deployment: DeployTo_${{ parameters.Environment }}
+  pool:
+    name: 'NCS - CI and CD'
+  environment: ${{ parameters.Environment }}
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - template: ../StepTemplates/DeployDocker.yml
+          parameters:
+            AksResourceGroup: ${{ parameters.AksResourceGroup }}
+            AzureSubscriptionEndpoint: ${{ parameters.AzureSubscriptionEndpoint}}
+            Environment: ${{ parameters.Environment }}
+            ImageBaseName: ${{ parameters.ImageBaseName }}
+            KeyVaultName: ${{ parameters.KeyVaultName }}
+            KubernetesCluster: ${{ parameters.KubernetesCluster }}
+            ManifestFileName: dfc-docker-hosted-agent.yaml
+            AzurePatToken: ${{ parameters.AzurePatToken }}

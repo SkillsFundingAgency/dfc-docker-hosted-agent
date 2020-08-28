@@ -7,7 +7,7 @@ parameters:
   ImageTag: ''
 
 jobs:
-- job: BuildNCSServiceTaxonomyEscoDbContainer
+- job: BuildNCSDockerDevOpsAgentContainer
   displayName: Build and publish build agent container
   pool: 'Hosted Ubuntu 1604'
   steps:
