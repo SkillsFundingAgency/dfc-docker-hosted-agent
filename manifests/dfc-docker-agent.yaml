@@ -21,10 +21,10 @@ spec:
           resources:
             requests:
               cpu: "130m"
-              memory: "300Mi"
+              memory: "900Mi"
             limits:
               cpu: "130m"
-              memory: "300Mi"
+              memory: "900Mi"
           env:
           - name: AZP_POOL
             value: 'NCS - Docker'
