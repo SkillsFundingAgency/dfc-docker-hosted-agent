@@ -70,11 +70,6 @@ ENV DOCKER_VERSION="18.03.1-ce"
 RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_VERSION.tgz | \
     tar zxvf - --strip 1 -C /usr/bin docker/docker
 
-WORKDIR /data
-COPY ./AgentScripts/install-agent.sh .
-RUN chmod +x install-agent.sh
-
-
 WORKDIR /azp
 COPY ./AgentScripts/start.sh .
 RUN chmod +x start.sh
