@@ -31,7 +31,7 @@ stages:
 - stage: Build
   variables:
     - group: dfc-shared-all
-    - group: dfc-shared-dev
+    - group: dfc-shared-lab
 
   jobs:
   - template: JobTemplates/BuildContainer.yml
@@ -50,8 +50,8 @@ stages:
   condition:  and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   variables:
       - group: dfc-shared-all
-      - group: KeyVault - dfc-dev-shared-kv
-      - group: dfc-shared-dev
+      - group: KeyVault - dfc-lab-shared-kv
+      - group: dfc-shared-lab
       - template: VariableTemplates\DevEnvironmentVariables.yml
       - template: VariableTemplates\SharedEnvironmentVariables.yml
   jobs:
