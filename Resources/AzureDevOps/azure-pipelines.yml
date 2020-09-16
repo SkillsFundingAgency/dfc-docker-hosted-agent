@@ -30,8 +30,8 @@ pr:
 stages:
 - stage: Build
   variables:
-    - group: dfc-shared-all
-    - group: dfc-shared-lab
+  - group: dfc-shared-all
+  - group: dfc-shared-lab
 
   jobs:
   - template: JobTemplates/BuildContainer.yml
@@ -44,22 +44,22 @@ stages:
       #TO DO: decide how to tag and publish image builds from branches
       ImageTag: $(Build.BuildNumber)
 
-- stage: DeployDEVStage
-  displayName: Deploy DEV stage
+- stage: DeployLABStage
+  displayName: Deploy LAB stage
   dependsOn: Build
   condition:  and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   variables:
-      - group: dfc-shared-all
-      - group: KeyVault - dfc-lab-shared-kv
-      - group: dfc-shared-lab
-      - template: VariableTemplates\DevEnvironmentVariables.yml
-      - template: VariableTemplates\SharedEnvironmentVariables.yml
+  - group: dfc-shared-all
+  - group: KeyVault - dfc-lab-shared-kv
+  - group: dfc-shared-lab
+  - template: VariableTemplates\DevEnvironmentVariables.yml
+  - template: VariableTemplates\SharedEnvironmentVariables.yml
   jobs:
   - template: JobTemplates/Deploy.yml
     parameters:
       AksResourceGroup: $(sharedResourceGroup)
       AzureSubscriptionEndpoint: 'SFA-CDH-Dev/Test (962cae10-2950-412a-93e3-d8ae92b17896)'
-      Environment: DEV_SHARED
+      Environment: LAB_SHARED
       ImageBaseName: ${{ variables.ImageBaseName }}
       KeyVaultName: $(sharedKeyVaultName)
       KubernetesCluster: $(sharedAksCluster)
