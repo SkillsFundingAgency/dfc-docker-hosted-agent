@@ -5,7 +5,7 @@ parameters:
   ImageBaseName: ''
   KubernetesCluster: ''
   AzurePatToken: ''
-  Namespace: ''
+  Namespace: 'default'
 
 jobs:
 - deployment: DeployTo_${{ parameters.Environment }}
