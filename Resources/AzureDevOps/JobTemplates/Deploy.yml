@@ -5,6 +5,7 @@ parameters:
   ImageBaseName: ''
   KubernetesCluster: ''
   AzurePatToken: ''
+  Namespace: ''
 
 jobs:
 - deployment: DeployTo_${{ parameters.Environment }}
@@ -23,3 +24,4 @@ jobs:
             KubernetesCluster: ${{ parameters.KubernetesCluster }}
             ManifestFileName: dfc-docker-agent.yaml
             AzurePatToken: ${{ parameters.AzurePatToken }}
+            Namespace: ${{ parameters.Namespace }}
