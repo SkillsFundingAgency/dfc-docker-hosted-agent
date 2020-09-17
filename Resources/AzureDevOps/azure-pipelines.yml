@@ -64,5 +64,5 @@ stages:
       KeyVaultName: $(sharedKeyVaultName)
       KubernetesCluster: $(sharedAksCluster)
       AzurePatToken:  $(AzureDevOpsAgentPatToken)
-      #Namespace: 'docker-hosted-agents'
+      Namespace: 'self-hosted-agents'
 
