@@ -32,7 +32,6 @@ stages:
   variables:
   - group: dfc-shared-all
   - group: dfc-shared-lab
-  - group: dfc-docker-host-lab
 
   jobs:
   - template: JobTemplates/BuildContainer.yml
@@ -53,6 +52,7 @@ stages:
   - group: dfc-shared-all
   - group: KeyVault - dfc-lab-shared-kv
   - group: dfc-shared-lab
+  - group: dfc-docker-host-lab
   - template: VariableTemplates\DevEnvironmentVariables.yml
   - template: VariableTemplates\SharedEnvironmentVariables.yml
   jobs:
