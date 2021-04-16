@@ -32,6 +32,7 @@ stages:
   variables:
   - group: dfc-shared-all
   - group: dfc-shared-lab
+  - group: dfc-docker-host-lab
 
   jobs:
   - template: JobTemplates/BuildContainer.yml

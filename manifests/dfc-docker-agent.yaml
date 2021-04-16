@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: dfc-docker-agent 
 spec:
-  replicas: 2
+  replicas: __DockerHostReplicasPerNode__
   progressDeadlineSeconds: 1800
   selector:
     matchLabels:
@@ -13,6 +13,9 @@ spec:
       labels:
         app: dfc-docker-agent 
     spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+        kubernetes.io/hostname: __DockerHostDeploymentNodeSelector__
       containers:
         - name: dfc-docker-agent
           image: __ContainerRegistryAdminUser__.azurecr.io/dfc-docker-hosted-agent:__NCSDockerDevOpsAgentsTag__
@@ -20,11 +23,11 @@ spec:
           - containerPort: 80
           resources:
             requests:
-              cpu: "80m"
-              memory: "200Mi"
+              cpu: __DockerHostCpuRequest__
+              memory: "__DockerHostMemoryRequest__"
             limits:
-              cpu: "200m"
-              memory: "900Mi"
+              cpu: __DockerHostCpuLimit__
+              memory: "__DockerHostMemoryLimit__"
           env:
           - name: AZP_POOL
             value: 'NCS - Docker'
