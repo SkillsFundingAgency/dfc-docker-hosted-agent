@@ -31,6 +31,8 @@ ARG AGENT_VERSION=2.190.0
 
 
 
+# install wget
+RUN apt-get install -y wget
 
 RUN set -eux; \
 	apt-get update; \
