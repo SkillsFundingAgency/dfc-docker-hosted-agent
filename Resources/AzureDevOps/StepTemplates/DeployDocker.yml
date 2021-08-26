@@ -7,7 +7,6 @@ parameters:
   AzurePatToken: ''
   Namespace: 'default'
   AzureDevOpsUrl: ''
-  AgentPool: ''
 
 steps:
 #Create Namespace
@@ -35,7 +34,7 @@ steps:
     useClusterAdmin: true
     namespace: '${{ parameters.Namespace }}'
     secretType: generic
-    secretArguments: --from-literal=AZP_TOKEN=${{ parameters.AzurePatToken }}  --from-literal=AZP_URL=${{ parameters.AzureDevOpsUrl }} --from-literal=AZP_POOL=${{ parameters.AgentPool }} 
+    secretArguments: --from-literal=AZP_TOKEN=${{ parameters.AzurePatToken }}  --from-literal=AZP_URL=${{ parameters.AzureDevOpsUrl }}  
     secretName: azdevops
 
 # Deploy the hosted docker agent docker image

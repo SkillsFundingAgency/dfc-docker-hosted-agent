@@ -7,7 +7,6 @@ parameters:
   AzurePatToken: ''
   Namespace: 'default'
   AzureDevOpsUrl: ''
-  AgentPool: ''
 
 jobs:
 - deployment: DeployTo_${{ parameters.Environment }}
@@ -28,4 +27,3 @@ jobs:
             AzurePatToken: ${{ parameters.AzurePatToken }}
             Namespace: ${{ parameters.Namespace }}
             AzureDevOpsUrl: ${{ parameters.AzureDevOpsUrl }}
-            AgentPool: ${{ parameters.AgentPool }}

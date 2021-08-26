@@ -67,5 +67,4 @@ stages:
       AzurePatToken:  $(AzureDevOpsAgentPatToken)
       Namespace: 'self-hosted-agents'
       AzureDevOpsUrl: ${{ variables.AzureDevOpsUrl }}
-      AgentPool: ${{ variables.NCSAzureDevOpsBuildAgentPool }}
 
