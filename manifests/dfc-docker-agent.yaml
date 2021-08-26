@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dfc-docker-agent0 
+  labels:
+    app: dfc-docker-agent
 spec:
   replicas: __DockerHostReplicasPerNode__
   progressDeadlineSeconds: 1800
@@ -55,6 +57,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dfc-docker-agent1 
+  labels:
+    app: dfc-docker-agent
 spec:
   replicas: __DockerHostReplicasPerNode__
   progressDeadlineSeconds: 1800
