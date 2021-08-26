@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libicu60 \
     libunwind8 \
     netcat \
+    wget \
     libssl1.0 \
   && rm -rf /var/lib/apt/lists/*
 
@@ -30,9 +31,6 @@ ARG TARGETARCH=amd64
 ARG AGENT_VERSION=2.190.0
 
 
-
-# install wget
-RUN apt-get install -y wget
 
 RUN set -eux; \
 	apt-get update; \
