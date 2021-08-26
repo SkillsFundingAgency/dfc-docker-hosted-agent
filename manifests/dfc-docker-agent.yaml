@@ -32,7 +32,10 @@ spec:
               memory: "__DockerHostMemoryLimit__"
           env:
           - name: AZP_POOL
-            value: 'NCS - Docker'
+            valueFrom:
+              secretKeyRef:
+                name: azdevops
+                key: AZP_POOL
           - name: AZP_URL
             valueFrom:
               secretKeyRef:
