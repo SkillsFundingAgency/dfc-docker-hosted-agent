@@ -30,7 +30,6 @@ ARG TARGETARCH=amd64
 ARG AGENT_VERSION=2.190.0
 
 # Install Maven
-RUN apt-get add --no-cache curl tar bash
 ARG MAVEN_VERSION=3.3.9
 ARG USER_HOME_DIR="/root"
 RUN mkdir -p /usr/share/maven && \
