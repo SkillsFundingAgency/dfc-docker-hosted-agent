@@ -10,7 +10,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     jq \
     git \
-    apk \
     iputils-ping \
     libcurl4 \
     libicu60 \
@@ -31,7 +30,7 @@ ARG TARGETARCH=amd64
 ARG AGENT_VERSION=2.190.0
 
 # Install Maven
-RUN apk add --no-cache curl tar bash
+RUN apt-get add --no-cache curl tar bash
 ARG MAVEN_VERSION=3.3.9
 ARG USER_HOME_DIR="/root"
 RUN mkdir -p /usr/share/maven && \
