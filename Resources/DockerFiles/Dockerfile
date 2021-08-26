@@ -27,7 +27,7 @@ RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-$DO
     tar zxvf - --strip 1 -C /usr/bin docker/docker
 
 ARG TARGETARCH=amd64
-ARG AGENT_VERSION=2.185.1
+ARG AGENT_VERSION=2.190.0
 
 WORKDIR /azp
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
