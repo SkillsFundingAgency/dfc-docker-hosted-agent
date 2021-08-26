@@ -6,6 +6,7 @@ parameters:
   ManifestFilename: ''
   AzurePatToken: ''
   Namespace: 'default'
+  AzureDevOpsUrl: ''
 
 steps:
 #Create Namespace

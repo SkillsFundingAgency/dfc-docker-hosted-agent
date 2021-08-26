@@ -66,4 +66,5 @@ stages:
       KubernetesCluster: $(sharedAksCluster)
       AzurePatToken:  $(AzureDevOpsAgentPatToken)
       Namespace: 'self-hosted-agents'
+      AzureDevOpsUrl: ${{ variables.AzureDevOpsUrl }}
 

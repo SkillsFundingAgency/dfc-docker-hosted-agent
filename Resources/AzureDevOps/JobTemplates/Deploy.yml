@@ -6,6 +6,7 @@ parameters:
   KubernetesCluster: ''
   AzurePatToken: ''
   Namespace: 'default'
+  AzureDevOpsUrl: ''
 
 jobs:
 - deployment: DeployTo_${{ parameters.Environment }}
@@ -25,3 +26,4 @@ jobs:
             ManifestFileName: dfc-docker-agent.yaml
             AzurePatToken: ${{ parameters.AzurePatToken }}
             Namespace: ${{ parameters.Namespace }}
+            AzureDevOpsUrl: ${{ parameters.AzureDevOpsUrl }}
