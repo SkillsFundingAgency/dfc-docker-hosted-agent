@@ -52,7 +52,8 @@ stages:
   - group: dfc-shared-all
   - group: KeyVault - dfc-lab-shared-kv
   - group: dfc-shared-lab
-  - template: VariableTemplates\DevEnvironmentVariables.yml
+  - group: dfc-docker-host-lab
+  - template: VariableTemplates\LabEnvironmentVariables.yml
   - template: VariableTemplates\SharedEnvironmentVariables.yml
   jobs:
   - template: JobTemplates/Deploy.yml
@@ -65,4 +66,5 @@ stages:
       KubernetesCluster: $(sharedAksCluster)
       AzurePatToken:  $(AzureDevOpsAgentPatToken)
       Namespace: 'self-hosted-agents'
+      AzureDevOpsUrl: ${{ variables.AzureDevOpsUrl }}
 

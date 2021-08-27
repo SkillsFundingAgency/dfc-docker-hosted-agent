@@ -1,9 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dfc-docker-agent 
+  name: dfc-docker-agent0 
+  labels:
+    app: dfc-docker-agent
 spec:
-  replicas: 2
+  replicas: __DockerHostReplicasPerNode__
   progressDeadlineSeconds: 1800
   selector:
     matchLabels:
@@ -13,6 +15,9 @@ spec:
       labels:
         app: dfc-docker-agent 
     spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+        kubernetes.io/hostname: __DockerHostDeploymentNodeSelector0__
       containers:
         - name: dfc-docker-agent
           image: __ContainerRegistryAdminUser__.azurecr.io/dfc-docker-hosted-agent:__NCSDockerDevOpsAgentsTag__
@@ -20,21 +25,79 @@ spec:
           - containerPort: 80
           resources:
             requests:
-              cpu: "80m"
-              memory: "200Mi"
+              cpu: __DockerHostCpuRequest__
+              memory: "__DockerHostMemoryRequest__"
             limits:
-              cpu: "200m"
-              memory: "900Mi"
+              cpu: __DockerHostCpuLimit__
+              memory: "__DockerHostMemoryLimit__"
           env:
           - name: AZP_POOL
             value: 'NCS - Docker'
-          - name: AZP_TOKEN
-            valueFrom: 
-              secretKeyRef:
-                name: dfc-azuredevops-pat-token
-                key: pattokensecret
           - name: AZP_URL
-            value: __AzureDevOpsUrl__
+            valueFrom:
+              secretKeyRef:
+                name: azdevops
+                key: AZP_URL
+          - name: AZP_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: azdevops
+                key: AZP_TOKEN
+          securityContext:
+            allowPrivilegeEscalation: false
+          volumeMounts:
+          - name: docker-graph-storage
+            mountPath: /var/run/docker.sock
+      volumes:
+      - name: docker-graph-storage
+        hostPath:
+            path: /var/run/docker.sock
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dfc-docker-agent1 
+  labels:
+    app: dfc-docker-agent
+spec:
+  replicas: __DockerHostReplicasPerNode__
+  progressDeadlineSeconds: 1800
+  selector:
+    matchLabels:
+      app: dfc-docker-agent
+  template:
+    metadata:
+      labels:
+        app: dfc-docker-agent 
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+        kubernetes.io/hostname: __DockerHostDeploymentNodeSelector1__
+      containers:
+        - name: dfc-docker-agent
+          image: __ContainerRegistryAdminUser__.azurecr.io/dfc-docker-hosted-agent:__NCSDockerDevOpsAgentsTag__
+          ports:
+          - containerPort: 80
+          resources:
+            requests:
+              cpu: __DockerHostCpuRequest__
+              memory: "__DockerHostMemoryRequest__"
+            limits:
+              cpu: __DockerHostCpuLimit__
+              memory: "__DockerHostMemoryLimit__"
+          env:
+          - name: AZP_POOL
+            value: 'NCS - Docker'
+          - name: AZP_URL
+            valueFrom:
+              secretKeyRef:
+                name: azdevops
+                key: AZP_URL
+          - name: AZP_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: azdevops
+                key: AZP_TOKEN
           securityContext:
             allowPrivilegeEscalation: false
           volumeMounts:

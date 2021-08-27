@@ -6,6 +6,7 @@ parameters:
   ManifestFilename: ''
   AzurePatToken: ''
   Namespace: 'default'
+  AzureDevOpsUrl: ''
 
 steps:
 #Create Namespace
@@ -21,6 +22,7 @@ steps:
     useConfigurationFile: true
     inline: '{ "kind": "Namespace", "apiVersion": "v1", "metadata": { "name": "${{ parameters.Namespace }}" }}'
 
+
 # Create PAT token secret
 - task: Kubernetes@1
   displayName: kubectl create pat token secret
@@ -32,8 +34,9 @@ steps:
     useClusterAdmin: true
     namespace: '${{ parameters.Namespace }}'
     secretType: generic
-    secretArguments: --from-literal=pattokensecret=${{ parameters.AzurePatToken }}
-    secretName: dfc-azuredevops-pat-token
+    secretArguments: --from-literal=AZP_TOKEN=${{ parameters.AzurePatToken }}  --from-literal=AZP_URL=${{ parameters.AzureDevOpsUrl }}  
+    secretName: azdevops
+
 # Deploy the hosted docker agent docker image
 - template: .\dfc-kubernetes-deploy.yml
   parameters:
