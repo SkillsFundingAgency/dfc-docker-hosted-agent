@@ -9,7 +9,8 @@ parameters:
 jobs:
 - job: BuildNCSDockerDevOpsAgentContainer
   displayName: Build and publish build agent container
-  vmImage: 'ubuntu-latest'
+  pool:
+    vmImage: 'ubuntu-latest'
   steps:
   - template: AzureDevOpsTemplates/Build/StepTemplates/dfc-docker-publish-k8smanifest.yml@dfc-devops
     parameters:
