@@ -9,7 +9,7 @@ parameters:
 jobs:
 - job: BuildNCSDockerDevOpsAgentContainer
   displayName: Build and publish build agent container
-  pool: 'ubuntu-latest'
+  agent: 'ubuntu-latest'
   steps:
   - template: AzureDevOpsTemplates/Build/StepTemplates/dfc-docker-publish-k8smanifest.yml@dfc-devops
     parameters:
